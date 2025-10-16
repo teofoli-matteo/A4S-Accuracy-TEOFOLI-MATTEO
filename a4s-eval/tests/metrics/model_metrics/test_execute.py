@@ -99,10 +99,6 @@ def test_accuracy_metric_in_batches(
     test_dataset: Dataset,
     functional_model: FunctionalModel,
 ):
-    """
-    Duplicate of test_data_metric_registry_contains_evaluator but specifically tests
-    the 'accuracy' metric in batches of 10,000 rows.
-    """
 
     evaluator_function = next(
         (f for f in model_metric_registry if f[0] == "accuracy"), None
