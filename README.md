@@ -1,34 +1,45 @@
+# 0. PGD Attack Success Rate (ASR) Metric 
 # 1. Metric Name
 Attack Success Rate
 
 # 2. Trustworthiness aspect
-Category -> Security / Robustness\
-Description -> ASR measures how easily an AI model’s predictions can be changed by adversarial perturbations — in other words, how vulnerable or robust the model is to attacks.
+Category : Security / Robustness\
+Description :
+The Attack Success Rate (ASR) metric measures how easily an AI model's predictions can be changed by adversarial perturbations. It evalutes the orbustness of AI models by quantifying the proportion of successful attack that cause misclassification.
 
-This metric evaluates the robustness of AI models against adversarial perturbations by quantifying the proportion of successful attacks that cause misclassification
+In other words, a higher ASR indicates that the model is more vulnerable to adversarial attacks; while a lower ASR indicates greater robustness.
 
 # 3. Class of models it applies to
-Attack success rate applies broadly, but for practical reasons, you can focus on:\
+  - Primarly designed for neural network classifiers (PyTorch-based in this project)
+  - Can generalize to models exposing:
+      - ```.predict()``` : deterministric class predictions
+      - ```.predict.proba()``` : predicted class probabilities
+      - ```.predict_with_grad()``` : optionally provides gradients for attack calculation
 
-Neural network models (e.g., PyTorch- or TensorFlow-based classifiers)
+Data types supported: 
+  - Image data (RGB tensors ```[C,H,W]``` : main focus in this project
+  - Audio ?
 
----- spec ----\
-Deep learning models for tabular, image, or text data.\
-Models that expose a .predict() or .predict_proba() function.
+Example models tested:
+  - PyTorch resnet18 on sample images (duck.png in my project)
 
 # 4. Working assumptions
-- The model outputs a class prediction (classification task).
-- The inputs can be numerically perturbed (so no categorical-only datasets).
-- You have access to the model’s gradients or can simulate perturbations (e.g., adding small Gaussian noise if gradients are unavailable).
-- The attack method must be consistent (e.g., same perturbation size for all samples).
+- The task is a classification problem.
+- Input features are numerically perturbable
+- Access to model gradients is assumed
+- Attack parameters (perturbation size ```eps```, step size ```alpha```, number of iterations ```iters```)
 
-# 5. Datasets to test it
+Defaylt attack parameters in my implementation:
+  - ```eps = 0.3``` (maximum perturbation per pixel)
+  - ```alpha = 0.01``` (step size)
+  - ```iters = 10 ``` (number of pgd steps)
 
-- Tabular
-- MNIST
-- CIFAR
+# 5. Datasets and Examples
+Any image present in the A4S framework test folder can be used (I added it.)
+  - ```tests/data/duck.png```
 
-I think that for the project we will only use the data already present in the a4s framework.
+How to test: 
+I must add the launch procedure here. 
 
 # 6. References
 - Performance Evaluation of Adversarial Attacks: Discrepancies and Solutions
