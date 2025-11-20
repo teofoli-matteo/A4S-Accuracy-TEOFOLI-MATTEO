@@ -18,7 +18,7 @@ from a4s_eval.data_model.evaluation import Dataset, DataShape
 from a4s_eval.service.model_functional import FunctionalModel
 
 ROOT = "tiny-imagenet-200"
-N_IMAGES = 15
+N_IMAGES = 500
 
 MEASURES_DIR = "tests/data/measures"
 os.makedirs(MEASURES_DIR, exist_ok=True)
