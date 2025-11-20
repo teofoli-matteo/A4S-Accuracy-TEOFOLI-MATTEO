@@ -21,12 +21,14 @@ Data types supported:
   
   - Models tested in this Project:
   We evauluted the ASR metric on 4 pretrained ImageNet models
-  | Model  | Source | Type |
-| ------------- | ------------- | ------------- |
-| ResNet-18  | torchvision  | CNN  |
-| MobileNet-V2 | torchvision  | Lightweight CNN |
-| VGG-16 | torchvision  | Deep CNN |
-| DenseNet-121 | torchvision  | CNN whith skip connections |
+
+  | Model | Source | Type |
+|-----:|-----------|-----------|
+|     ResNet-18 | torchvision| CNN|
+|     MobileNet-V2| torchvision    |Lightweight CNN|
+|     VGG-16| torchvision       |Deep CNN|
+|     DenseNet-121| torchvision       |CNN whith skip connections|
+
 
 
 
