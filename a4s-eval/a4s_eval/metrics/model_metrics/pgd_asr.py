@@ -23,7 +23,6 @@ def _build_loader_from_dataset(dataset: Dataset, datashape: DataShape, batch_siz
 
 
 def pgd_attack_torch(model, x, y, eps=0.01, alpha=0.005, iters=7, device="cpu"):
-    """PGD attack plus calme pour éviter ASR = 100%."""
     x_adv = x.clone().detach().to(device)
     x_adv.requires_grad_(True)
 
