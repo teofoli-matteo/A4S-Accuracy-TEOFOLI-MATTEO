@@ -18,10 +18,18 @@ In other words, a higher ASR indicates that the model is more vulnerable to adve
 
 Data types supported: 
   - Image data (RGB tensors ```[C,H,W]``` : main focus in this project
-  - Audio ?
+  
+  - Models tested in this Project:
+  We evauluted the ASR metric on 4 pretrained ImageNet models
+  | Model  | Source | Type |
+| ------------- | ------------- | ------------- |
+| ResNet-18  | torchvision  | CNN  |
+| MobileNet-V2 | torchvision  | Lightweight CNN |
+| VGG-16 | torchvision  | Deep CNN |
+| DenseNet-121 | torchvision  | CNN whith skip connections |
 
-Example models tested:
-  - PyTorch resnet18 on sample images (duck.png in my project)
+
+
 
 # 4. Working assumptions
 - The task is a classification problem.
@@ -30,16 +38,20 @@ Example models tested:
 - Attack parameters (perturbation size ```eps```, step size ```alpha```, number of iterations ```iters```)
 
 Defaylt attack parameters in my implementation:
-  - ```eps = 0.3``` (maximum perturbation per pixel)
-  - ```alpha = 0.01``` (step size)
-  - ```iters = 10 ``` (number of pgd steps)
+  - ```eps = 0.01``` (maximum perturbation per pixel)
+  - ```alpha = 0.005``` (step size)
+  - ```iters = 7 ``` (number of pgd steps)
 
 # 5. Datasets and Examples
-Any image present in the A4S framework test folder can be used (I added it.)
-  - ```tests/data/duck.png```
+Dataset used in the final evaluation
+ - We evaluate ASR on Tiny-ImageNet-200:
+    - 200 classes
+    - 64x64 images
+    - In the project: we sample 500 images for faster evaluation
+    - Labels extracted via ```wnids.txt```
 
 How to test: 
-I must add the launch procedure here. 
+Inside the A4S framework : ```uv run pytest```
 
 # 6. References
 - Performance Evaluation of Adversarial Attacks: Discrepancies and Solutions
